@@ -178,7 +178,22 @@ bool DronesManager::remove_back() {
 }
 
 bool DronesManager::replace(unsigned int index, DroneRecord value) {
-	return false;
+	if(index < 1 || index > size)
+		return false;
+	DroneRecord* cur = first;
+	for(int i = 1; i < index; i++)
+	{
+		cur = cur->next;
+	}
+	value.next = cur->next;
+	value.prev = cur->prev;
+	cur->next=NULL;
+	cur->prev=NULL
+	if (index == 1)
+		first = &value;
+	elseif(index == size)
+		last = &value;
+	return true;
 }
 
 bool DronesManager::reverse_list() {
