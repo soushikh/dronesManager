@@ -114,11 +114,7 @@ bool DronesManager::insert(DroneRecord value, unsigned int index) {
 		value.prev = cur->prev;
 		value.next = cur;
 		size++;
-first->next->prev = NULL;
-	first->next = NULL;
-	first = first->next;
-	size--;
-	return true;		return true;                      
+		return true;		                     
 	}
 }
 
