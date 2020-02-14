@@ -210,7 +210,10 @@ bool test3() {
 	ASSERT_TRUE(select(4) == DronesManager::DroneRecord(100));
 	ASSERT_TRUE(select(1) == DronesManager::DroneRecord(80));
 	ASSERT_TRUE(select(2) == DronesManager::DroneRecord(90));
-    return false;
+	ASSERT_TRUE(search(DronesManager::DroneRecord(90)) == 2);
+	ASSERT_TRUE(search(DronesManager::DroneRecord(80)) == 1);
+	ASSERT_TRUE(search(DronesManager::DroneRecord(0)) == 3);
+    	return true;
 }
 
 // PURPOSE: remove_front() and remove_back() on one-element list
