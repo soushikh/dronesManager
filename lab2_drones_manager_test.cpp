@@ -201,6 +201,15 @@ bool DronesManager::reverse_list() {
 
 // PURPOSE: select() and search() work properly
 bool test3() {
+	DronesManager manager1;
+	ASSERT_TRUE(select(2) == DronesManager::DroneRecord(0));
+	manager1.insert_front(DronesManager::DroneRecord(100));
+	manager1.insert_front(DronesManager::DroneRecord(90));
+	manager1.insert_front(DronesManager::DroneRecord(80));
+	ASSERT_TRUE(select(0) == DronesManager::DroneRecord(100));
+	ASSERT_TRUE(select(4) == DronesManager::DroneRecord(100));
+	ASSERT_TRUE(select(1) == DronesManager::DroneRecord(80));
+	ASSERT_TRUE(select(2) == DronesManager::DroneRecord(90));
     return false;
 }
 
