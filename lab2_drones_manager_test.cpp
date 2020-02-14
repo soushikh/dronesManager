@@ -254,9 +254,21 @@ bool test4() {
 bool test5()
 {
 	DronesManager manager1, manager2;
+	manager1.reverse();
+	ASSERT_TRUE( manager1 == manager2)
 	DroneRecord drone1(100);
-	manager1.insert_front(dron1);
-	manager2.insert_back(Ddron1);
+	manager1.insert_front(drone1);
+	manager2.insert_back(drone1);
+	manager1.reverse();
+	ASSERT_TRUE( manager1 == manager2)
+	DroneRecord drone2(90);
+	manager1.insert_front(drone2);
+	manager2.insert_back(drone2);
+	DroneRecord drone3(80);
+	manager1.insert_front(drone3);
+	manager2.insert_back(drone3);
+	manager1.reverse();
+	ASSERT_TRUE( manager1 == manager2)
     	return true;
 }
 
