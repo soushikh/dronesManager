@@ -71,6 +71,8 @@ DronesManager::DroneRecord DronesManager::select(unsigned int index) const 		//C
 
 unsigned int DronesManager::search(DroneRecord value) const 
 {
+	if (size == 0)
+		return size;
 	int index = 0;
 	DroneRecord* cur = first;
 	for (int i=0; i<size; i++)
@@ -203,6 +205,7 @@ bool DronesManager::reverse_list() {
 bool test3() {
 	DronesManager manager1;
 	ASSERT_TRUE(select(2) == DronesManager::DroneRecord(0));
+	ASSERT_TRUE(search(DronesManager::DroneRecord(10)) == 0);
 	manager1.insert_front(DronesManager::DroneRecord(100));
 	manager1.insert_front(DronesManager::DroneRecord(90));
 	manager1.insert_front(DronesManager::DroneRecord(80));
