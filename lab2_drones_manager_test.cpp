@@ -105,7 +105,7 @@ bool DronesManager::insert(DroneRecord value, unsigned int index)
 		return insert_back(value);
 	else
 	{
-		DroneRecord* val = new DroneRecord(value);
+		DroneRecord* val = new DronesManager::DroneRecord(value);
 		DroneRecord* cur = first;
 		for(int i = 1; i < index; i++)
 		{
@@ -121,7 +121,7 @@ bool DronesManager::insert(DroneRecord value, unsigned int index)
 
 bool DronesManager::insert_front(DroneRecord value) 
 {
-	DroneRecord* val = new DroneRecord(value);
+	DroneRecord* val = new DronesManager::DroneRecord(value);
 	val.prev = NULL;
 	val.next = first;
 	first = &val; 
@@ -132,7 +132,7 @@ bool DronesManager::insert_front(DroneRecord value)
 
 bool DronesManager::insert_back(DroneRecord value) 
 {
-	DroneRecord* val = new DroneRecord(value);
+	DroneRecord* val = new DronesManager::DroneRecord(value);
 	val.next = NULL;
 	val.prev = last;
 	last = &val; 
@@ -192,7 +192,7 @@ bool DronesManager::replace(unsigned int index, DroneRecord value) {
 	{
 		cur = cur->next;
 	}
-	roneRecord* val = new DroneRecord(value);
+	DroneRecord* val = new DronesManager::DroneRecord(value);
 	val.next = cur->next;
 	val.prev = cur->prev;
 	cur->next=NULL;
@@ -251,8 +251,13 @@ bool test4() {
 }
 
 // PURPOSE: replace() and reverse_list() work properly
-bool test5() {
-    return false;
+bool test5()
+{
+	DronesManager manager1, manager2;
+	DroneRecord drone1(100);
+	manager1.insert_front(dron1);
+	manager2.insert_back(Ddron1);
+    	return true;
 }
 
 // PURPOSE: insert_front() keeps moving elements forward
