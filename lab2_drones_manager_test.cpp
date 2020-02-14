@@ -254,11 +254,16 @@ bool test4() {
 bool test5()
 {
 	DronesManager manager1, manager2;
+	manager2.replace(0,DronesManager::DroneRecord(0));
+	manager2.replace(1,DronesManager::DroneRecord(0));
 	manager1.reverse();
 	ASSERT_TRUE( manager1 == manager2)
 	DroneRecord drone1(100);
 	manager1.insert_front(drone1);
 	manager2.insert_back(drone1);
+	manager2.replace(0,DronesManager::DroneRecord(0));
+	manager2.replace(1,DronesManager::DroneRecord(0));
+	manager1.replace(1,DronesManager::DroneRecord(0));
 	manager1.reverse();
 	ASSERT_TRUE( manager1 == manager2)
 	DroneRecord drone2(90);
@@ -268,7 +273,12 @@ bool test5()
 	manager1.insert_front(drone3);
 	manager2.insert_back(drone3);
 	manager1.reverse();
+	manager2.replace(0,DronesManager::DroneRecord(0));
+	manager2.replace(2,DronesManager::DroneRecord(0));
+	manager2.replace(4,DronesManager::DroneRecord(0));
 	ASSERT_TRUE( manager1 == manager2)
+	ASSERT_TRUE(manager2.selesct(2) == DronesManager::DroneRecord(0))
+	ASSERT_TRUE(manager.size ==  3)
     	return true;
 }
 
