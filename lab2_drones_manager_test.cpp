@@ -97,11 +97,11 @@ void DronesManager::print() const {
 
 bool DronesManager::insert(DroneRecord value, unsigned int index) 
 {
-	if(index < 1 || index > size)
+	if(index < 1 || index > size+1)
 		return false;
 	else if(index == 1)
 		return insert_front(value);
-	else if(index == size)
+	else if(index == size+1)
 		return insert_back(value);
 	else
 	{
@@ -296,21 +296,70 @@ bool test6()
 }
 
 // PURPOSE: inserting at different positions in the list
-bool test7() {
-    return false;
+bool test7() 
+{
+	DronesManager manager1;
+	manager1.insert(1,DronesManager::DroneRecord(10));
+	manager1.insert(2,DronesManager::DroneRecord(20));
+	manager1.insert(1,DronesManager::DroneRecord(30));
+	manager1.insert(2,DronesManager::DroneRecord(40));
+	manager1.insert(4,DronesManager::DroneRecord(50));
+	ASSERT_TRUE(manager2.selesct(1) == DronesManager::DroneRecord(30))
+	ASSERT_TRUE(manager2.selesct(2) == DronesManager::DroneRecord(40))
+	ASSERT_TRUE(manager2.selesct(3) == DronesManager::DroneRecord(10))
+	ASSERT_TRUE(manager2.selesct(4) == DronesManager::DroneRecord(50))
+	ASSERT_TRUE(manager2.selesct(5) == DronesManager::DroneRecord(20))	
+     	return true;
 }
 
 // PURPOSE: try to remove too many elements, then add a few elements
-bool test8() {
-    return false;
+bool test8() 
+{
+	DronesManager manager1;
+	manager1.insert_front(DronesManager::DroneRecord(100));
+	manager1.insert_front(DronesManager::DroneRecord(90));
+	manager1.remove_back();
+	manager1.remove_front();
+	manager1.remove_back();
+	manager1.remove_front();
+	manager1.insert_front(DronesManager::DroneRecord(80));
+	manager1.insert_front(DronesManager::DroneRecord(70));
+	manager1.insert_front(DronesManager::DroneRecord(60));
+	ASSERT_TRUE(manager2.selesct(1) == DronesManager::DroneRecord(80))
+	ASSERT_TRUE(manager2.selesct(2) == DronesManager::DroneRecord(70))
+	ASSERT_TRUE(manager2.selesct(3) == DronesManager::DroneRecord(60))
+    	return true;
 }
 
 // PURPOSE: lots of inserts and deletes, some of them invalid
-bool test9() {
-	return false;
+bool test9()
+{
+	DronesManager manager1;
+	manager1.insert(0,DronesManager::DroneRecord(0));
+	manager1.insert(1,DronesManager::DroneRecord(10));
+	manager1.insert(3,DronesManager::DroneRecord(20));
+	manager1.insert(2,DronesManager::DroneRecord(30));
+	manager1.insert(1,DronesManager::DroneRecord(40));
+	manager1.remove(0);
+	manager1.remove(4);
+	manager1.remove(2);
+	manager1.remove(2);
+	manager1.remove(1);
+	ASSERT_TRUE(manager1.size == 0)
+	return true;
 }    
 
 // PURPOSE: lots of inserts, reverse the list, and then lots of removes until empty
-bool test10() {
-   return false;
+bool test10()
+{
+	DronesManager manager1;
+	manager1.insert(1,DronesManager::DroneRecord(10));
+	manager1.insert(2,DronesManager::DroneRecord(20));
+	manager1.insert(3,DronesManager::DroneRecord(30));
+	manager1.reverse();
+	manager1.remove_back();
+	manager1.remove_back();
+	manager1.remove_back();
+	ASSERT_TRUE(manager1.size == 0)
+   	return true;
 } 
