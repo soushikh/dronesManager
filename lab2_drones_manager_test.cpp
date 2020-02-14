@@ -55,13 +55,9 @@ DronesManager::DroneRecord DronesManager::select(unsigned int index) const 		//C
 		return DroneRecord(0);
 	else if (index < 1 || index > size)
 	{
-		for(int i = 0; i < size-1; i++)
-		{
-			cur = cur->next;
-		}
-		return *cur;
+		return *last;
 	}
-	else if (index == 1)				//Assume index 0 is the first element
+	else if (index == 1)				
 		return *cur;
 	else 
 	{
@@ -200,8 +196,45 @@ bool DronesManager::reverse_list() {
 	if(start && end)
 	
 	temp->next = start->prev;
-	temp->prev = start->next;
-	
-	
-	
+	temp->prev = start->next;	
 }
+
+// PURPOSE: select() and search() work properly
+bool test3() {
+    return false;
+}
+
+// PURPOSE: remove_front() and remove_back() on one-element list
+bool test4() {
+    return false;
+}
+
+// PURPOSE: replace() and reverse_list() work properly
+bool test5() {
+    return false;
+}
+
+// PURPOSE: insert_front() keeps moving elements forward
+bool test6() {
+    return false;
+}
+
+// PURPOSE: inserting at different positions in the list
+bool test7() {
+    return false;
+}
+
+// PURPOSE: try to remove too many elements, then add a few elements
+bool test8() {
+    return false;
+}
+
+// PURPOSE: lots of inserts and deletes, some of them invalid
+bool test9() {
+	return false;
+}    
+
+// PURPOSE: lots of inserts, reverse the list, and then lots of removes until empty
+bool test10() {
+   return false;
+} 
