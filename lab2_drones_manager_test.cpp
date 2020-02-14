@@ -283,8 +283,16 @@ bool test5()
 }
 
 // PURPOSE: insert_front() keeps moving elements forward
-bool test6() {
-    return false;
+bool test6() 
+{
+	DronesManager manager1;
+	manager1.insert_front(DronesManager::DroneRecord(100));
+	manager1.insert_front(DronesManager::DroneRecord(10));
+	ASSERT_TRUE(manager2.selesct(2) == DronesManager::DroneRecord(100))
+	manager1.insert_front(DronesManager::DroneRecord(0));
+	ASSERT_TRUE(manager2.selesct(2) == DronesManager::DroneRecord(10))
+	ASSERT_TRUE(manager2.selesct(3) == DronesManager::DroneRecord(100))
+    	return true;
 }
 
 // PURPOSE: inserting at different positions in the list
