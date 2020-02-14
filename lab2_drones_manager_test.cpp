@@ -242,13 +242,11 @@ bool test4() {
 	manager1.remove_front();
 	manager2.insert_back(DronesManager::DroneRecord(100));
 	manager2.remove_back();
-
+	ASSERT_TRUE(manager1.empty() && manager2.empty())
 	ASSERT_TRUE(manager1.get_size() == manager2.get_size() && manager1.get_size() == 0)
 	ASSERT_TRUE(manager1.first == NULL && manager1.first == manager1.last)
 	ASSERT_TRUE(manager2.first == NULL && manager2.first == manager2.last)
-	ASSERT_TRUE(manager1.first->prev == NULL && manager1.last->next == NULL)
-	ASSERT_TRUE(manager2.first->prev == NULL && manager2.last->next == NULL)
-	ASSERT_TRUE(manager1.select(0) == manager2.select(0) && manager1.select(0) == DronesManager::DroneRecord(100))		
+	ASSERT_TRUE(manager1.select(0) == manager2.select(0) && manager1.select(0) == DronesManager::DroneRecord(0))		
 	return true;
 }
 
