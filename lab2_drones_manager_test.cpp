@@ -207,14 +207,24 @@ bool DronesManager::replace(unsigned int index, DroneRecord value) {
 }
 
 bool DronesManager::reverse_list() {
-	DroneRecord*start = first;
-	DroneRecord*end = last;
-	DroneRecord*temp;
+	if(size < 2)
+		return true;
 	
-	if(start && end)
+	DroneRecord* cur = last;
+	DroneRecord* temp = NULL;
 	
-	temp->next = start->prev;
-	temp->prev = start->next;	
+	while(cur)
+	{
+		temp = cur->prev;
+		cur->prev = cur->next;
+		cur->next = temp;
+		cur = cur->next;
+	}
+	
+	temp = first;
+	first = last;
+	last = temp;
+	temp = NULL
 }
 
 // PURPOSE: select() and search() work properly
